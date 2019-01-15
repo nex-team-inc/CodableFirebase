@@ -30,9 +30,9 @@ open class FirestoreDecoder {
     
     open var userInfo: [CodingUserInfoKey : Any] = [:]
     
-    open func decode<T : Decodable>(_ type: T.Type, from container: [String: Any]) throws -> T {
+    open func decode<T : Decodable>(_ type: T.Type, from container: [String: Any], dateDecodingStrategy: FirebaseDecoder.DateDecodingStrategy? = nil) throws -> T {
         let options = _FirebaseDecoder._Options(
-            dateDecodingStrategy: nil,
+            dateDecodingStrategy: dateDecodingStrategy,
             dataDecodingStrategy: nil,
             skipFirestoreTypes: true,
             userInfo: userInfo
